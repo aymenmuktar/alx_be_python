@@ -1,38 +1,41 @@
 # daily_reminder.py
 
-# Ask for task details
-task = input("Enter your task: ")
-priority = input("Priority (high/medium/low): ").lower()
-time_bound = input("Is it time-bound? (yes/no): ").lower()
+def get_priority():
+    while True:
+        priority = input("Priority (high/medium/low): ").strip().lower()
+        if priority in {"high", "medium", "low"}:
+            return priority
+        print("Invalid input. Please enter high, medium, or low.")
 
-# Validate input and loop until correct priority is given
-while priority not in ['high', 'medium', 'low']:
-    print("Invalid priority. Please enter high, medium, or low.")
-    priority = input("Priority (high/medium/low): ").lower()
+def get_time_bound():
+    while True:
+        time_bound = input("Is it time-bound? (yes/no): ").strip().lower()
+        if time_bound in {"yes", "no"}:
+            return time_bound
+        print("Invalid input. Please enter yes or no.")
 
-# Validate time_bound input
-while time_bound not in ['yes', 'no']:
-    print("Invalid input. Please enter yes or no.")
-    time_bound = input("Is it time-bound? (yes/no): ").lower()
+def main():
+    task = input("Enter your task: ").strip()
+    priority = get_priority()
+    time_bound = get_time_bound()
 
-# Reminder message
-match priority:
-    case 'high':
-        if time_bound == 'yes':
-            print(f"\nReminder: '{task}' is a high priority task that requires immediate attention today!")
-        else:
-            print(f"\nNote: '{task}' is a high priority task. Plan to complete it as soon as possible.")
-    case 'medium':
-        if time_bound == 'yes':
-            print(f"\nReminder: '{task}' is a medium priority task that should be done today.")
-        else:
-            print(f"\nNote: '{task}' is a medium priority task. Try to complete it this week.")
-    case 'low':
-        if time_bound == 'yes':
-            print(f"\nReminder: '{task}' is a low priority task but needs to be done today.")
-        else:
-            print(f"\nNote: '{task}' is a low priority task. Consider completing it when you have free time.")
+    print()  # Add spacing before the reminder
 
-# Final message
-print("\nWell done on completing this project! Let the world hear about this milestone achieved.\n🚀 Click here to tweet! 🚀")
+    match priority:
+        case "high":
+            if time_bound == "yes":
+                print(f"Reminder: '{task}' is a high priority task that requires immediate attention today!")
+            else:
+                print(f"Note: '{task}' is a high priority task. Make sure to schedule time for it soon.")
+        case "medium":
+            if time_bound == "yes":
+                print(f"Reminder: '{task}' is a medium priority task that still requires attention today.")
+            else:
+                print(f"Note: '{task}' is a medium priority task. Try to fit it into your day.")
+        case "low":
+            if time_bound == "yes":
+                print(f"Reminder: '{task}' is a low priority but time-sensitive task. Try not to delay it.")
+            else:
+                print(f"Note: '{task}' is a low priority task. Consider completing it when you have free time
+
 
