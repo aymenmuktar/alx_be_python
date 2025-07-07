@@ -1,6 +1,6 @@
 # File: fns_and_dsa/arithmetic_operations.py
 
-def perform_operation(num1: float, num2: float, operation: str):
+def perform_operation(num1, num2, operation):
     """
     Performs basic arithmetic operations based on the provided operation string.
     
